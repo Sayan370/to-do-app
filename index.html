@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+ 
+  <style>
+    .mt-15{
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+    <div clas="container">
+        <div class="row">
+            <div class="col-md-6 mt-15 offset-md-3">
+            <div class="card d-flex ">
+                <div class="card-header"><h5>Todos (<span id="txtTaskCount">2</span>)</h5></div>
+                <div class="card-body">
+                    
+                  <form class="form-row">
+                    
+                    <div class="col-10">
+                        
+                        <input type="text" id="txttodo" class="form-control mb-2" id="inlineFormInput" placeholder="Enter Todo Here">
+                      </div>
+                      <div class="col-2">
+                        <button type="button" onClick="addToDo()" class="btn btn-primary btn-block mb-2">Submit</button>
+                      </div>
+                  </form>
+                  <div>
+                  <div class="card" id="divRender">
+                  
+                    
+                  </div>
+                </div>
+              </div>
+   
+                  
+              </div>
+            </div>
+        </div>
+    </div>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
