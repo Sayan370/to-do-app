@@ -52,10 +52,17 @@ const render=()=>{
   let divContent='';
   document.getElementById("txtTaskCount").innerHTML=arr.length;
   
+  if(arr.length>0){
   arr.reverse().map(function(val, index){
     divContent=divContent+`<div class="card-body ${val.status=='1' ? `bg-light text-dark` : ``}"><div class="row"><div class="col-md-1"><input type="checkbox" class="checkboxes form-control" onclick="checkTask(this)" ${val.status=='1' ? `checked` : ``} value="${index}" id="txtCheck${index}"></div><div class="col-md-8">  <span id="txtTaskname${index}">${val.name}</span></div><div class="col-md-3 "><button class="btn btn-danger float-right" onClick="deleteItem(${index})"><i class="fa fa-trash"></i></button><button class="btn btn-success float-right" id="btnx${index}" onClick="editData(${index})"><i class="fa fa-edit"></i></button></div></div></div>`;
           
         });
+
+      }else{
+
+        divContent=`<div class="card-body"><div class="row"><div class="col-md-12"><h4 class="text-center">No Task Found</h4></div></div></div>`;
+    
+      }
 
       
         myEle.innerHTML=divContent;
