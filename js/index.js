@@ -1,7 +1,7 @@
 //render items 
 const render=()=>{
 
-  var arr = localStorage.getItem('testObject');
+  var arr = localStorage.getItem('taskObject');
 
   arr=JSON.parse(arr);
 
@@ -9,7 +9,17 @@ const render=()=>{
   myEle.innerHTML = '';
 
   let divContent='';
-  document.getElementById("txtTaskCount").innerHTML=arr.length;
+
+  if(arr==null){
+
+    arr=0;
+
+    document.getElementById("txtTaskCount").innerHTML=0;
+  }else{
+
+    document.getElementById("txtTaskCount").innerHTML=arr.length;
+  }
+ 
   
   if(arr.length>0){
   arr.reverse().map(function(val, index){
@@ -18,6 +28,8 @@ const render=()=>{
         });
 
       }else{
+
+        console.log(1);
 
         divContent=`<div class="card-body"><div class="row"><div class="col-md-12"><h4 class="text-center">No Task Found</h4></div></div></div>`;
     
@@ -41,7 +53,7 @@ const addToDo=()=>{
 
  
 
-var retrievedObject = localStorage.getItem('testObject');
+var retrievedObject = localStorage.getItem('taskObject');
 
 var obj = {};
 
@@ -64,7 +76,7 @@ retrievedObject=[
 ];
 }
 
-localStorage.setItem('testObject', JSON.stringify(retrievedObject));
+localStorage.setItem('taskObject', JSON.stringify(retrievedObject));
 
 
 render();
@@ -83,7 +95,7 @@ return true;
 
 const checkTask=(el)=>{
 
-  var arr = localStorage.getItem('testObject');
+  var arr = localStorage.getItem('taskObject');
   var elIndex=el.value;
 
 arr=JSON.parse(arr);
@@ -107,7 +119,7 @@ const updatedItems = arr.reverse().map(function(val, index){
 
 
 
-localStorage.setItem('testObject', JSON.stringify(updatedItems.reverse()));
+localStorage.setItem('taskObject', JSON.stringify(updatedItems.reverse()));
 render();
 }
 
@@ -117,7 +129,7 @@ const deleteItem=(elIndex)=>{
 
   
 
-  var arr = localStorage.getItem('testObject');
+  var arr = localStorage.getItem('taskObject');
  
 
 arr=JSON.parse(arr);
@@ -130,7 +142,7 @@ updatedItems=arr.reverse().splice(elIndex,1);
 
 
 
-localStorage.setItem('testObject', JSON.stringify(arr.reverse()));
+localStorage.setItem('taskObject', JSON.stringify(arr.reverse()));
 render();
 }
 
@@ -156,7 +168,7 @@ const updateValue=(elIndex)=>{
   var eleVal=document.getElementById("txtEditInp"+elIndex).value;
 
   if(eleVal!=null && eleVal!=''){
-  var arr = localStorage.getItem('testObject');
+  var arr = localStorage.getItem('taskObject');
  
 
 arr=JSON.parse(arr);
@@ -167,7 +179,7 @@ updatedItems=arr.reverse();
 
 updatedItems[elIndex].name=eleVal;
 
-localStorage.setItem('testObject', JSON.stringify(updatedItems.reverse()));
+localStorage.setItem('taskObject', JSON.stringify(updatedItems.reverse()));
 document.getElementById("txtTaskname"+elIndex).classList.remove("cancelstrikethrough");
 
 document.getElementById('txtTaskname'+elIndex).innerHTML=eleVal;
